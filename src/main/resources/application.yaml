@@ -1,0 +1,28 @@
+spring:
+  application:
+    name: petshop
+
+  config:
+    import: configserver:http://${CONFIG_SERVER_URL:localhost:8082}
+
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: https://dev-atfpp36qj24tzo8l.us.auth0.com/
+  kafka:
+    bootstrap-servers: ${KAFKA_URL:localhost:9092}
+    producer:
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+    consumer:
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      properties:
+        spring.json.trusted.packages: "*"
+  data:
+    mongodb:
+      uri: mongodb://${MONGODB_URL:localhost:27017}/petshop_notifications
+server:
+  port: 8088
+
+#debug:
+#  true
