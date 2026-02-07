@@ -18,7 +18,7 @@ node {
         checkout([$class: GitSCM,
                     branches: [[name: '*/hetzner']],
                     userRemoteConfigs: [[credentials: 'git',
-                            url: 'https://github.com/IslamHamada/petshop_notificationsservice.git'])
+                            url: 'https://github.com/IslamHamada/petshop_notificationsservice.git']]])
     }
 
     stage("Build Notifications Service") {
