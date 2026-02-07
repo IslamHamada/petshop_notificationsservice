@@ -4,7 +4,7 @@ node {
     def version = sh(script: "date +%s", returnStdout: true).trim()
 
     stage("Checkout Contracts") {
-        checkout([$class: GitSCM,
+        checkout([$class: 'GitSCM',
                 branches: [[name: '*/main']],
                 userRemoteConfigs: [[credentials: 'git',
                                      url: 'https://github.com/IslamHamada/petshop_contracts.git']]]);
@@ -15,7 +15,7 @@ node {
     }
 
     stage("Checkout Notifications Service") {
-        checkout([$class: GitSCM,
+        checkout([$class: 'GitSCM',
                     branches: [[name: '*/hetzner']],
                     userRemoteConfigs: [[credentials: 'git',
                             url: 'https://github.com/IslamHamada/petshop_notificationsservice.git']]])
