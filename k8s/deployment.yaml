@@ -32,11 +32,16 @@ spec:
                 configMapKeyRef:
                   key: config_server_url
                   name: config-cm
-            - name: DB_URL
+            - name: MONGODB_URL
               valueFrom:
                 configMapKeyRef:
-                  key: mysql_url
-                  name: mysql-cm
+                  key: mongo_url
+                  name: mongo-cm
+            - name: KAFKA_URL
+              valueFrom:
+                configMapKeyRef:
+                  key: kafka_url
+                  name: kafka-cm
 
 ---
 apiVersion: v1
