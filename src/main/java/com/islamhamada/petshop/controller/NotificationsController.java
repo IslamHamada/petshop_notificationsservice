@@ -11,20 +11,20 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/notifications/protected")
+@RequestMapping("/notifications")
 public class NotificationsController {
 
     @Autowired
     private NotificationsService notificationsService;
 
     @PreAuthorize("hasAnyRole('Customer')")
-    @GetMapping("/{userId}")
+    @GetMapping("/protected/{userId}")
     public List<NotificationDTO> getNotifications(@PositiveOrZero @PathVariable long userId) {
         return notificationsService.getNotifications(userId);
     }
 
     @PreAuthorize("hasAnyRole('Customer')")
-    @PutMapping("/{userId}")
+    @PutMapping("/protected/{userId}")
     public void readNotifications(@PositiveOrZero @PathVariable long userId) {
         notificationsService.readNotifications(userId);
     }
